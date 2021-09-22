@@ -6,7 +6,7 @@ import * as measure from './measure'
 import * as state from './state'
 import * as drawing from './drawing'
 import * as utils from './utils'
-const file = `Hey, welcome to Writer.\n`
+const file = `Hey, welcome to writer.\n`
 
 // Events
 
