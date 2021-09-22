@@ -1,0 +1,148 @@
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --fg: #e5e5e5;
+  --bg: #1d1d1d;
+}
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+
+  /* Enable kerning and optional ligatures */
+  text-rendering: optimizeLegibility;
+
+  /* Improve the rendering of text */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Do not delay click actions on mobile */
+  touch-action: manipulation;
+}
+
+body {
+  min-height: 100vh;
+  background: var(--bg);
+  color: var(--fg);
+}
+
+body,
+html {
+  overflow: hidden;
+  overscroll-behavior: none;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  padding: 0 2rem;
+  padding-top: 4rem;
+}
+
+main {
+  flex: 1;
+  width: 100%;
+  max-width: 40rem;
+  margin: 0 auto;
+}
+
+/* Editor specific styling */
+
+[writer-editor] {
+  position: relative;
+  max-height: 100vh;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  cursor: text;
+  font-feature-settings: 'calt' 0, 'case' 0, 'ccmp' 0, 'kern' 0;
+}
+
+[writer-wrapper] {
+  position: absolute;
+  contain: strict;
+  width: 1e6px;
+  height: 1e6px;
+  transform: translate3d(0, 0, 0);
+  will-change: top;
+}
+
+[writer-lines],
+[writer-decorations] {
+  position: absolute;
+  line-height: var(--text-line-height);
+  color: var(--text-color);
+  font-family: var(--text-font-family);
+}
+
+[writer-line] {
+  width: 100%;
+  position: absolute;
+  min-height: var(--text-line-height);
+}
+
+[writer-decoration] {
+  contain: strict;
+  pointer-events: none;
+  user-select: none;
+  transform-origin: left center;
+  width: 1px;
+  position: absolute;
+  min-height: var(--text-line-height);
+  background: var(--selection-color);
+}
+
+[writer-textarea] {
+  contain: strict;
+  content-visibility: auto;
+  pointer-events: none;
+  position: absolute;
+  padding: 0;
+  border: none;
+  height: var(--text-line-height);
+  white-space: nowrap;
+  opacity: 0;
+  top: 0;
+  left: 0;
+  will-change: transform;
+}
+
+[writer-cursor] {
+  pointer-events: none;
+  position: absolute;
+  width: var(--cursor-width);
+  border-radius: var(--cursor-radius);
+  height: var(--text-line-height);
+  background: var(--cursor-color);
+  top: 0;
+  left: 0;
+  will-change: transform;
+  transition: transform var(--cursor-animation-duration) ease;
+}
+
+[writer-scrollbar] {
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: var(--scrollbar-width);
+  margin: var(--scrollbar-gap);
+}
+
+[writer-scrollbar-thumb] {
+  cursor: default;
+  background: var(--scrollbar-color);
+  min-height: var(--scrollbar-minHeight);
+  border-radius: var(--scrollbar-width);
+  opacity: 0;
+  will-change: transform, opacity, height;
+  transition: transform 80ms ease, background 80ms ease,
+    opacity var(--scrollbar-animation-duration) ease;
+}
+
+[writer-scrollbar-thumb]:active {
+  background: var(--scrollbar-active-color);
+}
