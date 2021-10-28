@@ -71,7 +71,9 @@ export function getLineBreak(text) {
 }
 
 function setup() {
-  measureCtx = document.createElement('canvas').getContext('2d')
+  measureCtx = document
+    .createElement('canvas')
+    .getContext('2d', { alpha: false, desynchronized: true })
   const font = settings.text.fontSize + 'px' + ' ' + settings.text.font
   measureCtx.font = font
 
